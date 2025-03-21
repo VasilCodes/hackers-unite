@@ -1,5 +1,7 @@
 # 🚀 Hackers Unite 🏴‍☠️💻  
 
+# THIS PROJECT IS WIP (WORK IN PROGRESS) 
+
 Welcome to **Hackers Unite**, a collaborative space for cybersecurity enthusiasts, ethical hackers, and penetration testers! This repository serves as a hub for learning, sharing, and discussing various hacking techniques—all while promoting ethical hacking and responsible security practices.  
 
 ## 🔥 What You'll Find Here  

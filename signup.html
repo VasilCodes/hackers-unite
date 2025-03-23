@@ -3,58 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up | Hackers Unite</title>
+    <title>Sign Up - Hackers Unite</title>
     <style>
         body {
             font-family: "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(to bottom, #000000, #004d00);
+            color: white;
+            text-align: center;
             margin: 0;
-            height: 100vh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom, #000000, #004d00);
-            text-align: center;
-            color: white;
+            height: 100vh;
         }
 
-        h1 {
-            font-size: 32px;
-            text-shadow: 0 0 10px #00ff00;
-            opacity: 0;
-            transform: translateY(-20px);
-            animation: fadeIn 1.5s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .form-container {
+        .container {
             background: rgba(0, 0, 0, 0.8);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 15px #00ff00;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
+        }
+
+        h1 {
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
         }
 
         input {
-            width: 100%;
+            width: 90%;
             padding: 10px;
             margin: 10px 0;
             border: none;
-            background: #222;
-            color: #00ff00;
             border-radius: 5px;
+            text-align: center;
         }
 
-        .btn {
+        button {
             padding: 12px 24px;
             font-size: 16px;
             font-weight: bold;
@@ -66,60 +49,43 @@
             transition: transform 0.3s, background-color 0.3s;
         }
 
-        .btn:hover {
+        button:hover {
             background-color: #008000;
             transform: scale(1.1);
         }
 
-        p {
+        .message {
             margin-top: 10px;
-        }
-
-        a {
-            color: #00ff00;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
+            font-size: 14px;
+            color: red;
         }
     </style>
 </head>
 <body>
-
-    <h1>🚀 Sign Up for Hackers Unite</h1>
-    <div class="form-container">
-        <form id="signupForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit" class="btn">Sign Up</button>
-        </form>
-        <p>Already have an account? <a href="login.html">Login</a></p>
+    <div class="container">
+        <h1>📝 Create an Account</h1>
+        <input type="text" id="username" placeholder="Username"><br>
+        <input type="email" id="email" placeholder="Email"><br>
+        <input type="password" id="password" placeholder="Password"><br>
+        <button onclick="signup()">Sign Up</button>
+        <p class="message" id="message"></p>
     </div>
 
     <script>
-        document.getElementById("signupForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            
+        function signup() {
             const username = document.getElementById("username").value;
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            const response = await fetch("https://hackers-unite.onrender.com/signup", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ username, email, password })
-            });
-
-            const data = await response.json();
-            alert(data.message);
-
-            if (data.message.includes("✅")) {
-                window.location.href = "login.html";
+            if (!username || !email || !password) {
+                document.getElementById("message").textContent = "❌ Please fill in all fields!";
+                return;
             }
-        });
-    </script>
 
+            // Simulating signup success
+            alert("✅ Signup successful! Redirecting to login...");
+            window.location.href = "login.html"; // Redirect to login page
+        }
+    </script>
 </body>
 </html>

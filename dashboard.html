@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Hackers Unite</title>
+    <style>
+        /* Background gradient */
+        body {
+            font-family: "Helvetica Neue", Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #000000, #004d00);
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        /* Header */
+        h1 {
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+        }
+
+        /* Button container */
+        .button-container {
+            margin-top: 30px;
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 14px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background-color: #006400;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
+        }
+
+        .btn:hover {
+            background-color: #008000;
+            transform: scale(1.1);
+        }
+
+        /* Info text (hidden by default) */
+        .info-text {
+            margin-top: 15px;
+            font-size: 18px;
+            font-family: "Arial Rounded MT Bold", "Helvetica Rounded", sans-serif;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            margin-top: 40px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: red;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .logout-btn:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            text-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
+        }
+    </style>
+</head>
+<body>
+    <h1>🔓 Welcome to Hackers Unite Dashboard</h1>
+
+    <div class="button-container">
+        <button class="btn" onmouseover="showInfo('Access a collection of game hacks and cheats!')" onmouseout="hideInfo()" onclick="window.location.href='game-hacks.html'">🎮 Game Hacks</button>
+        <button class="btn" onmouseover="showInfo('Join discussions, share tips, and connect with hackers!')" onmouseout="hideInfo()" onclick="window.location.href='forums.html'">💬 Forums</button>
+    </div>
+
+    <p class="info-text" id="infoText"></p>
+
+    <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+
+    <!-- Copyright Footer -->
+    <p class="footer">© <span id="year"></span> VasilCodes. All rights reserved.</p>
+
+    <script>
+        let infoText = document.getElementById("infoText");
+
+        function showInfo(text) {
+            infoText.style.opacity = "0"; // Fade out before updating
+            infoText.style.transform = "translateY(5px)"; // Move down slightly
+
+            setTimeout(() => {
+                infoText.textContent = text; // Update text after fade-out
+                infoText.style.opacity = "1"; // Fade-in smoothly
+                infoText.style.transform = "translateY(0)"; // Move back to normal position
+            }, 150);
+        }
+
+        function hideInfo() {
+            infoText.style.opacity = "0"; // Fade out when no button is hovered
+        }
+
+        // Logout function (Redirect to login page)
+        function logout() {
+            alert("You have been logged out!");
+            window.location.href = "login.html";
+        }
+
+        // Set current year dynamically
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

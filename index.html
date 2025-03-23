@@ -1,16 +1,10 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Hackers Unite</title>
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
         <style>
             /* Background gradient */
             body {
@@ -34,6 +28,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
                 animation: fadeIn 1.5s ease-out forwards;
+                text-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
             }
 
             @keyframes fadeIn {
@@ -75,6 +70,7 @@
                 border-radius: 8px;
                 cursor: pointer;
                 transition: transform 0.3s, background-color 0.3s;
+                text-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
             }
 
             .btn:hover {
@@ -96,7 +92,7 @@
         <h1>🕶️ Hackers Unite - The best site known for hacking, cheating, and more 💻</h1>
 
         <div class="button-container">
-            <button class="btn" onmouseover="showInfo('🕵️ Join our community of elite hackers!')" onmouseout="hideInfo()">🔗 Join Us</button>
+            <button class="btn" onclick="window.location.href='login.html'">🔗 Join Us</button>
             <button class="btn" onmouseover="showInfo('📜 Learn about our latest hacking techniques!')" onmouseout="hideInfo()">📚 Learn More</button>
             <button class="btn" onmouseover="showInfo('🛠️ Get started with our tutorials and tools!')" onmouseout="hideInfo()">🚀 Get Started</button>
         </div>

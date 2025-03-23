@@ -12,21 +12,124 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="">
         <style>
+            /* Background gradient */
             body {
                 font-family: "Helvetica Neue", Arial, sans-serif;
                 font-size: 16px;
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background: linear-gradient(to bottom, #000000, #004d00);
+                overflow: hidden;
+                text-align: center;
+                color: white;
+                position: relative;
+            }
+
+            /* Fade-in animation for text */
+            h1 {
+                opacity: 0;
+                transform: translateY(-20px);
+                animation: fadeIn 1.5s ease-out forwards;
+            }
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            /* Info text (hidden by default) */
+            .info-text {
+                margin-top: 10px;
+                font-size: 18px;
+                font-family: "Arial Rounded MT Bold", "Helvetica Rounded", sans-serif;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            }
+
+            /* Button container - Positioned below the title */
+            .button-container {
+                margin-top: 40px;
+                display: flex;
+                gap: 15px;
+                animation: slideUp 1s ease-out forwards;
+            }
+
+            /* Button styling */
+            .btn {
+                padding: 12px 24px;
+                font-size: 16px;
+                font-weight: bold;
+                color: white;
+                background-color: #006400;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: transform 0.3s, background-color 0.3s;
+            }
+
+            .btn:hover {
+                background-color: #008000;
+                transform: scale(1.1);
+            }
+
+            /* Footer styling */
+            .footer {
+                position: absolute;
+                bottom: 10px;
+                font-size: 14px;
+                color: rgba(255, 255, 255, 0.7);
+                text-shadow: 0 0 8px rgba(0, 255, 0, 0.7);
             }
         </style>
     </head>
     <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <center>
-        <h1>Hackers Unite - The best site known for hacking, cheating and other</h1>
-        </center>
+        <h1>🕶️ Hackers Unite - The best site known for hacking, cheating, and more 💻</h1>
 
-        <script src="" async defer></script>
+        <div class="button-container">
+            <button class="btn" onmouseover="showInfo('🕵️ Join our community of elite hackers!')" onmouseout="hideInfo()">🔗 Join Us</button>
+            <button class="btn" onmouseover="showInfo('📜 Learn about our latest hacking techniques!')" onmouseout="hideInfo()">📚 Learn More</button>
+            <button class="btn" onmouseover="showInfo('🛠️ Get started with our tutorials and tools!')" onmouseout="hideInfo()">🚀 Get Started</button>
+        </div>
+
+        <p class="info-text" id="infoText"></p>
+
+        <!-- Copyright Footer -->
+        <p class="footer">© <span id="year"></span> VasilCodes. All rights reserved.</p>
+
+        <script>
+            let infoText = document.getElementById("infoText");
+            let timeout;
+
+            function showInfo(text) {
+                clearTimeout(timeout); // Prevent flickering
+                infoText.style.opacity = "0"; // Start fade out before updating
+                infoText.style.transform = "translateY(5px)"; // Move down slightly
+
+                setTimeout(() => {
+                    infoText.textContent = text; // Update text after fade-out
+                    infoText.style.opacity = "1"; // Fade-in smoothly
+                    infoText.style.transform = "translateY(0)"; // Move back to normal position
+                }, 150);
+            }
+
+            function hideInfo() {
+                timeout = setTimeout(() => {
+                    infoText.style.opacity = "0"; // Fade out when no button is hovered
+                }, 300);
+            }
+
+            // Set current year dynamically
+            document.getElementById("year").textContent = new Date().getFullYear();
+        </script>
     </body>
 </html>

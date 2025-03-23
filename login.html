@@ -10,64 +10,55 @@
             background: linear-gradient(to bottom, #000000, #004d00);
             color: white;
             text-align: center;
-            margin: 0;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
-
+        h1 {
+            text-shadow: 0 0 10px #00ff00;
+        }
         .container {
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.7);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 255, 0, 0.7);
         }
-
-        h1 {
-            text-shadow: 0 0 8px rgba(0, 255, 0, 0.8);
-        }
-
-        input {
-            width: 90%;
+        input, button {
+            margin: 10px;
             padding: 10px;
-            margin: 10px 0;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
+            width: 250px;
         }
-
         button {
-            padding: 12px 24px;
-            font-size: 16px;
-            font-weight: bold;
-            color: white;
             background-color: #006400;
+            color: white;
             border: none;
-            border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s, background-color 0.3s;
         }
-
         button:hover {
             background-color: #008000;
-            transform: scale(1.1);
         }
-
-        .message {
+        .signup-link {
             margin-top: 10px;
-            font-size: 14px;
-            color: red;
+        }
+        .signup-link a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+        .signup-link a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
+
+    <h1>🔐 Login to Hackers Unite</h1>
     <div class="container">
-        <h1>🔑 Login to Hackers Unite</h1>
         <input type="text" id="username" placeholder="Username"><br>
         <input type="password" id="password" placeholder="Password"><br>
         <button onclick="login()">Login</button>
-        <p class="message" id="message"></p>
+        
+        <p class="signup-link">Don't have an account? <a href="signup.html">Sign up here!</a></p>
     </div>
 
     <script>
@@ -75,13 +66,25 @@
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
 
-            // Check if admin
-            if (username === "VasilTyulev" && password === "Vaskoto1231") {
-                window.location.href = "admin_dashboard.html"; // Redirect to admin dashboard
-            } else {
-                window.location.href = "dashboard.html"; // Redirect to user dashboard
-            }
+            fetch("https://hackers-unite.onrender.com/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                if (data.message.includes("Login successful")) {
+                    if (username === "VasilTyulev") {
+                        window.location.href = "admin_dashboard.html"; // Redirect to admin panel
+                    } else {
+                        window.location.href = "dashboard.html"; // Redirect to user dashboard
+                    }
+                }
+            })
+            .catch(error => console.error("Error:", error));
         }
     </script>
+
 </body>
 </html>

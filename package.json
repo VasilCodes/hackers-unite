@@ -1,0 +1,27 @@
+{
+  "name": "hackers-unite",
+  "version": "1.0.0",
+  "description": "Welcome to **Hackers Unite**, a collaborative space for cybersecurity enthusiasts, ethical hackers, and penetration testers! This repository serves as a hub for learning, sharing, and discussing various hacking techniques—all while promoting ethical hacking and responsible security practices.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VasilCodes/hackers-unite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VasilCodes/hackers-unite/issues"
+  },
+  "homepage": "https://github.com/VasilCodes/hackers-unite#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.2"
+  }
+}
